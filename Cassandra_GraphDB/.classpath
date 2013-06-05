@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/antlr-3.2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/apache-cassandra-1.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/apache-cassandra-clientutil-1.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/apache-cassandra-thrift-1.2.4.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/avro-1.4.0-fixes.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/avro-1.4.0-sources-fixes.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/cassandra-jdbc-1.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/commons-cli-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/commons-codec-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/compress-lzf-0.8.4.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/concurrentlinkedhashmap-lru-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/cql-internal-only-1.4.0.zip"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/guava-13.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/high-scale-lib-1.1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/jackson-core-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/jackson-mapper-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/jamm-0.2.5.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/jbcrypt-0.3m.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/jline-1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/libthrift-0.7.0.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/lz4-1.1.0.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/metrics-core-2.0.3.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/netty-3.5.9.Final.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/servlet-api-2.5-20081211.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/DataStax Community/apache-cassandra/lib/slf4j-log4j12-1.7.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
