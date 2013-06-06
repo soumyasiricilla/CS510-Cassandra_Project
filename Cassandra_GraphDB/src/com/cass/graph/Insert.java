@@ -14,8 +14,10 @@ public class Insert {
     	String gender = MainMenu.sc.next();
     	System.out.print("Enter occupation: ");
     	String occupation = MainMenu.sc.next();
+    	System.out.print("Enter weight: ");
+    	int weight = MainMenu.sc.nextInt();
     	try {
-    		insertNode(name, gender, occupation);
+    		insertNode(name.trim(), gender.trim(), occupation.trim(), weight);
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
@@ -24,77 +26,65 @@ public class Insert {
     public static void insertEdge() {
     	System.out.println("INSERT EDGE: ");
     	
-    	System.out.print("Enter source node ID/ name: ");
-    	int sourceNode = validate_node(MainMenu.sc.next());
-    	if (sourceNode == 0) {
+    	System.out.print("Enter source node name: ");
+    	UUID sourceNode = validate_node(MainMenu.sc.next());
+    	System.out.println(sourceNode);
+    	if (sourceNode == null) {
     		System.out.println ("Invalid source node");
     		return;
     	}
     	
     	System.out.print("Enter destination node ID/ name: ");
-    	int destNode = validate_node(MainMenu.sc.next());
-    	if (destNode == 0) {
+    	UUID destNode = validate_node(MainMenu.sc.next());
+    	if (destNode == null) {
     		System.out.println ("Invalid destination node");
     		return;
     	}
 
     	System.out.print("Enter relationship type: ");
     	String relType = MainMenu.sc.next();
-    	
     	try {
-            insertEdge(sourceNode, relType, destNode);
+            insertEdge("Out", sourceNode, relType, destNode);
+            insertEdge("InEdge", destNode, relType, sourceNode);
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
     }
 
-    public static int validate_node(String IdOrName) {
-    	String query;
-    	if (isInteger(IdOrName)){
-            query="SELECT node_id FROM Nodes WHERE node_id =" + IdOrName + ";";
-    	} else {    		
-            query="SELECT node_id FROM Nodes WHERE name = '" + IdOrName + "';";
-    	}
-    	
+    public static UUID validate_node(String name) {
+    	String query="SELECT node_id FROM Nodes WHERE name = '" + name + "';";
         System.out.println(query);
         try {
             Statement st = MainMenu.con.createStatement();
             ResultSet rs = st.executeQuery(query);
-            return(rs.getInt(1));
+            return((UUID) rs.getObject(1));
         } catch (SQLException e) {
     		System.err.println(e.getMessage());
         }
         
-        return 0;
+        return null;
     }
     
-    public static boolean isInteger(String s) {
-        try { 
-            Integer.parseInt(s); 
-        } catch(NumberFormatException e) { 
-            return false; 
-        }
-        // only got here if we didn't return false
-        return true;
-    }
-
-    public static void insertNode(String name, String gender,String occupation) throws SQLException {
-    	String query = "SELECT COUNT(*) FROM Nodes;";
-        Statement st = MainMenu.con.createStatement();
-        ResultSet rs = st.executeQuery(query);
-        int nodeID = rs.getInt(1) + 1;
+    public static void insertNode(String name, String gender,String occupation, int weight) throws SQLException {
+    	UUID nodeID = UUID.randomUUID();
     			
-    	query="INSERT INTO Nodes (node_id, name, gender, occupation) " +
-         		"VALUES (" + nodeID  + ", '" + name + "', '" + gender + "','" + occupation + "');";
+    	String query="INSERT INTO Nodes (node_id, name, gender, " +
+    									 "occupation, weight) " +
+         		"VALUES (" + nodeID  + ", '" + name + "', '" + gender +
+         				 "','" + occupation + "'," + weight + ");";
+        Statement st = MainMenu.con.createStatement();
     	System.out.println(query);
         st.executeUpdate(query);
     	System.out.println("Inserted node: " + nodeID);
     }
 
-    public static void insertEdge(int sourceNode, String relType, int destNode) throws SQLException {
+    public static void insertEdge(String table, UUID sourceNode, String relType, UUID destNode) 
+    		throws SQLException {
     	UUID relID = UUID.randomUUID();
-        String query="INSERT INTO Out (source_node, rel_id, rel_type, dest_node) " +
-        		"VALUES (" + sourceNode + "," + relID + "," + "'" + relType + "', " + destNode +");";
+        String query="INSERT INTO " + table + "(source_node, rel_id, " +
+        										"rel_type, dest_node) " +
+        			 "VALUES (" + sourceNode + "," + relID + "," + "'" + 
+        						relType + "', " + destNode +");";
         System.out.println(query);
         Statement st = MainMenu.con.createStatement();
         st.executeUpdate(query);
