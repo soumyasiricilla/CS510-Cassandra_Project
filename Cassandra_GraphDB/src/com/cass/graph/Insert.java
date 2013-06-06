@@ -9,15 +9,13 @@ public class Insert {
 	public static void insertNode() {
     	System.out.println("INSERT NODE:");
     	System.out.print("Enter name: ");
-    	String name = MainMenu.sc.next();
+    	String name = MainMenu.sc.next().trim();
     	System.out.print("Enter gender: ");
-    	String gender = MainMenu.sc.next();
+    	String gender = MainMenu.sc.next().trim();
     	System.out.print("Enter occupation: ");
-    	String occupation = MainMenu.sc.next();
-    	System.out.print("Enter weight: ");
-    	int weight = MainMenu.sc.nextInt();
+    	String occupation = MainMenu.sc.next().trim();
     	try {
-    		insertNode(name.trim(), gender.trim(), occupation.trim(), weight);
+    		insertNode(name, gender, occupation);
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
@@ -27,7 +25,7 @@ public class Insert {
     	System.out.println("INSERT EDGE: ");
     	
     	System.out.print("Enter source node name: ");
-    	UUID sourceNode = validate_node(MainMenu.sc.next());
+    	UUID sourceNode = validate_node(MainMenu.sc.next().trim());
     	System.out.println(sourceNode);
     	if (sourceNode == null) {
     		System.out.println ("Invalid source node");
@@ -35,17 +33,21 @@ public class Insert {
     	}
     	
     	System.out.print("Enter destination node ID/ name: ");
-    	UUID destNode = validate_node(MainMenu.sc.next());
+    	UUID destNode = validate_node(MainMenu.sc.next().trim());
     	if (destNode == null) {
     		System.out.println ("Invalid destination node");
     		return;
     	}
 
     	System.out.print("Enter relationship type: ");
-    	String relType = MainMenu.sc.next();
+    	String relType = MainMenu.sc.next().trim();
+
+    	System.out.print("Enter weight: ");
+    	int weight = MainMenu.sc.nextInt();
+
     	try {
-            insertEdge("Out", sourceNode, relType, destNode);
-            insertEdge("InEdge", destNode, relType, sourceNode);
+            insertEdge("Out", sourceNode, relType, destNode, weight);
+            insertEdge("InEdge", sourceNode, relType, destNode, weight);
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
@@ -65,26 +67,26 @@ public class Insert {
         return null;
     }
     
-    public static void insertNode(String name, String gender,String occupation, int weight) throws SQLException {
+    public static void insertNode(String name, String gender,String occupation) 
+    		throws SQLException {
     	UUID nodeID = UUID.randomUUID();
     			
-    	String query="INSERT INTO Nodes (node_id, name, gender, " +
-    									 "occupation, weight) " +
+    	String query="INSERT INTO Nodes (node_id, name, gender, occupation) " +
          		"VALUES (" + nodeID  + ", '" + name + "', '" + gender +
-         				 "','" + occupation + "'," + weight + ");";
+         				 "','" + occupation + "');";
         Statement st = MainMenu.con.createStatement();
     	System.out.println(query);
         st.executeUpdate(query);
     	System.out.println("Inserted node: " + nodeID);
     }
 
-    public static void insertEdge(String table, UUID sourceNode, String relType, UUID destNode) 
-    		throws SQLException {
+    public static void insertEdge(String table, UUID sourceNode, String relType, 
+    		UUID destNode, int weight) throws SQLException {
     	UUID relID = UUID.randomUUID();
         String query="INSERT INTO " + table + "(source_node, rel_id, " +
-        										"rel_type, dest_node) " +
+        										"rel_type, dest_node, weight) " +
         			 "VALUES (" + sourceNode + "," + relID + "," + "'" + 
-        						relType + "', " + destNode +");";
+        						relType + "', " + destNode +"," + weight + ");";
         System.out.println(query);
         Statement st = MainMenu.con.createStatement();
         st.executeUpdate(query);
