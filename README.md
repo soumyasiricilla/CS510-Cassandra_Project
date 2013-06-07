@@ -28,39 +28,39 @@ Configuration Steps:
 
 1. Setup  Cassandra and cassandra-jdbc
 
-We are using cassandra-jdbc, which is a JDBC driver for connectivity between Cassandra/CQL and Java.
-Java is used as a front end language for developing the application and connecting to the database stored in Cassandra.
+   We are using cassandra-jdbc, which is a JDBC driver for connectivity between Cassandra/CQL and Java.
+   Java is used as a front end language for developing the application and connecting to the database stored in Cassandra.
 
-Download cassandra-jdbc driver(cassandra-jdbc-1.2.5.jar) from above given link in lib folder in CASSANDRA home (\apache-cassandra-1.2.5\lib).
+   Download cassandra-jdbc driver(cassandra-jdbc-1.2.5.jar) from above given link in lib folder in CASSANDRA home (\apache-cassandra-1.2.5\lib).
 
-Make sure below librabraries are also present in lib folder in CASSANDRA home (\apache-cassandra-1.2.5\lib):
+   Make sure below librabraries are also present in lib folder in CASSANDRA home (\apache-cassandra-1.2.5\lib):
 
-apache-cassandra-thrift-1.2.5.jar
+   apache-cassandra-thrift-1.2.5.jar
 
-apache-cassandra-clientutil-1.2.5.jar
+   apache-cassandra-clientutil-1.2.5.jar
 
-libthrift-0.7.0.jar
+   libthrift-0.7.0.jar
 
-apache-cassandra-1.2.5.jar
+   apache-cassandra-1.2.5.jar
 
-guava-13.0.1.jar
+   guava-13.0.1.jar
 
-cassandra-jdbc-1.2.5.jar
+   cassandra-jdbc-1.2.5.jar
 
-log4j-1.2.16.jar
+   log4j-1.2.16.jar
 
-slf4j-api-1.7.2.jar
+   slf4j-api-1.7.2.jar
 
-slf4j-log4j12-1.7.2.jar
+   slf4j-log4j12-1.7.2.jar
 
-Follow below link for running Cassandra Server and Client:
+   Follow below link for running Cassandra Server and Client:
 
-http://wiki.apache.org/cassandra/GettingStarted
+   http://wiki.apache.org/cassandra/GettingStarted
 
-3. Setup Cassandra cluster
+2. Setup Cassandra cluster
 
 
-2. Download the github project and import it in Eclipse.
+3. Download the github project and import it in Eclipse.
 
 http://help.eclipse.org/helios/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Ftasks%2Ftasks-importproject.htm
 
