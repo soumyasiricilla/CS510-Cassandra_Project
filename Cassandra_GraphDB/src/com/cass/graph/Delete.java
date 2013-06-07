@@ -1,30 +1,35 @@
 package com.cass.graph;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
 
 public class Delete {
-    public static void deleteEdge() {
+    private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));          
+    
+    public static void deleteEdge() throws IOException {
     	System.out.println("DELETE EDGE: ");
     	
     	System.out.print("Enter source node name: ");
-    	UUID sourceNode = Queries.getNodeId(MainMenu.sc.next());
+    	UUID sourceNode = Queries.getNodeId(br.readLine().trim());
     	if (sourceNode == null) {
     		System.out.println ("Invalid source node");
     		return;
     	}
     	
     	System.out.print("Enter destination node name: ");
-    	UUID destNode = Queries.getNodeId(MainMenu.sc.next());
+    	UUID destNode = Queries.getNodeId(br.readLine().trim());
     	if (destNode == null) {
     		System.out.println ("Invalid destination node");
     		return;
     	}
 
     	System.out.print("Enter relationship type: ");
-    	String relType = MainMenu.sc.next().trim();
+    	String relType = br.readLine().trim();
 
     	try {
             deleteEdge("Out", sourceNode,destNode, relType);
@@ -37,10 +42,10 @@ public class Delete {
     /* This function first deletes all the edges associated with the given node and
      * then deletes the node. 
      */
-    public static void deleteNode() {
+    public static void deleteNode() throws IOException {
     	System.out.println("DELETE NODE:");
     	System.out.print("Enter name: ");
-    	UUID nodeId = Queries.getNodeId(MainMenu.sc.next());
+    	UUID nodeId = Queries.getNodeId(br.readLine().trim());
     	if (nodeId == null) {
     		System.out.println ("Invalid node name");
     		return;

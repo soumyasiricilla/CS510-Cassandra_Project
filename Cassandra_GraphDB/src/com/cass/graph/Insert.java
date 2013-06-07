@@ -1,18 +1,23 @@
 package com.cass.graph;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
 
 public class Insert {
-	public static void insertNode() {
+    private static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    
+	public static void insertNode() throws IOException{
     	System.out.println("INSERT NODE:");
     	System.out.print("Enter name: ");
-    	String name = MainMenu.sc.next().trim();
+    	String name = br.readLine().trim();
     	System.out.print("Enter gender: ");
-    	String gender = MainMenu.sc.next().trim();
+    	String gender = br.readLine().trim();
     	System.out.print("Enter occupation: ");
-    	String occupation = MainMenu.sc.next().trim();
+    	String occupation = br.readLine().trim();
     	try {
     		insertNode(name, gender, occupation);
     	} catch (Exception e) {
@@ -20,11 +25,11 @@ public class Insert {
     	}
     }
     
-    public static void insertEdge() {
+    public static void insertEdge() throws IOException {
     	System.out.println("INSERT EDGE: ");
     	
     	System.out.print("Enter source node name: ");
-    	UUID sourceNode = Queries.getNodeId(MainMenu.sc.next().trim());
+    	UUID sourceNode = Queries.getNodeId(br.readLine().trim());
     	System.out.println(sourceNode);
     	if (sourceNode == null) {
     		System.out.println ("Invalid source node");
@@ -32,14 +37,14 @@ public class Insert {
     	}
     	
     	System.out.print("Enter destination node ID/ name: ");
-    	UUID destNode = Queries.getNodeId(MainMenu.sc.next().trim());
+    	UUID destNode = Queries.getNodeId(br.readLine().trim());
     	if (destNode == null) {
     		System.out.println ("Invalid destination node");
     		return;
     	}
 
     	System.out.print("Enter relationship type: ");
-    	String relType = MainMenu.sc.next().trim();
+    	String relType = br.readLine().trim();
 
     	System.out.print("Enter weight: ");
     	int weight = MainMenu.sc.nextInt();
