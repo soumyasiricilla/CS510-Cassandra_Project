@@ -6,7 +6,7 @@ There are a many social netwroking applications present today that use similar g
 This project is a part of the course "CS 410/510-Data Management in the Cloud" in Portland State University.
 
 
-Software Needed:
+Softwares Needed:
 
 1. apache-cassandra-1.2.5-bin.tar.gz
 http://cassandra.apache.org/download/
@@ -35,22 +35,14 @@ Configuration Steps:
 
    Make sure below librabraries are also present in lib folder in CASSANDRA home (\apache-cassandra-1.2.5\lib):
 
-   apache-cassandra-thrift-1.2.5.jar
-
-   apache-cassandra-clientutil-1.2.5.jar
-
-   libthrift-0.7.0.jar
-
-   apache-cassandra-1.2.5.jar
-
-   guava-13.0.1.jar
-
-   cassandra-jdbc-1.2.5.jar
-
-   log4j-1.2.16.jar
-
-   slf4j-api-1.7.2.jar
-
+   apache-cassandra-thrift-1.2.5.jar, 
+   apache-cassandra-clientutil-1.2.5.jar, 
+   libthrift-0.7.0.jar, 
+   apache-cassandra-1.2.5.jar, 
+   guava-13.0.1.jar, 
+   cassandra-jdbc-1.2.5.jar, 
+   log4j-1.2.16.jar, 
+   slf4j-api-1.7.2.jar, 
    slf4j-log4j12-1.7.2.jar
 
    Follow below link for running Cassandra Server and Client:
@@ -61,22 +53,18 @@ Configuration Steps:
    
    The Cassandra database can be setup in multinode cluster for replicating data among nodes. Below are the parameters that need to be modified in the cassandra.yaml file.
    
-   listen_addr: Address to bind to and tell other
+   > listen_addr: Address to bind to and tell other Cassandra nodes to connect to.
 
-   Cassandra nodes to connect to.
+   > rpc_addr: The address other clients connect to.
 
-   rpc_addr: The address other clients connect to.
+   > Seeds: IP addr of machines that contain information about the ring
 
-   Seeds: IP addr of machines that contain
-
-   information about the ring
-
-   RandomPartitioner: method to share data between clusters
+   > RandomPartitioner: method to share data between clusters
    
-   Create a keyspace with name "GraphDB" using below cmd:
+   > Create a keyspace with name "GraphDB" using below cmd:
    
-   CREATE KEYSPACE GraphDB
-   WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }; 
+      CREATE KEYSPACE GraphDB
+      WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }; 
 
 3. Download the github project and import it in Eclipse.
 
@@ -85,21 +73,21 @@ http://help.eclipse.org/helios/index.jsp?topic=%2Forg.eclipse.platform.doc.user%
 
 File manifest(class files included):
 
-   MainMenu.java
+   > MainMenu.java
 
-   Bridge.java
+   > Bridge.java
 
-   Delete.java
+   > Delete.java
 
-   Display.java
+   > Display.java
 
-   FriendClass.java
+   > FriendClass.java
 
-   Insert.java
+   > Insert.java
 
-   Queries.java
+   > Queries.java
 
-   TransitiveClosure.java
+   > TransitiveClosure.java
 
 
 Developers:
