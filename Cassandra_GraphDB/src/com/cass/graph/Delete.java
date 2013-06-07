@@ -10,14 +10,14 @@ public class Delete {
     	System.out.println("DELETE EDGE: ");
     	
     	System.out.print("Enter source node name: ");
-    	UUID sourceNode = Insert.validate_node(MainMenu.sc.next());
+    	UUID sourceNode = Queries.getNodeId(MainMenu.sc.next());
     	if (sourceNode == null) {
     		System.out.println ("Invalid source node");
     		return;
     	}
     	
     	System.out.print("Enter destination node name: ");
-    	UUID destNode = Insert.validate_node(MainMenu.sc.next());
+    	UUID destNode = Queries.getNodeId(MainMenu.sc.next());
     	if (destNode == null) {
     		System.out.println ("Invalid destination node");
     		return;
@@ -40,7 +40,7 @@ public class Delete {
     public static void deleteNode() {
     	System.out.println("DELETE NODE:");
     	System.out.print("Enter name: ");
-    	UUID nodeId = Insert.validate_node(MainMenu.sc.next());
+    	UUID nodeId = Queries.getNodeId(MainMenu.sc.next());
     	if (nodeId == null) {
     		System.out.println ("Invalid node name");
     		return;
@@ -82,14 +82,10 @@ public class Delete {
      * This function will delete edge 1->2 from Out table.
      */
     public static void deleteOutEdges(UUID nodeID) throws SQLException {
-    	Statement st = MainMenu.con.createStatement();
-
     	/* InEdges table can give us all the edges where the given node is a 
     	 * destination node.
     	 */
-    	String query = "SELECT * FROM InEdge WHERE dest_node = " + nodeID + ";";
-    	System.out.println(query);
-    	ResultSet result = st.executeQuery(query);
+    	ResultSet result = Queries.getInEdges(nodeID);
     	while (result.next())
     	{
 			String relType = result.getString("rel_type");
@@ -97,7 +93,7 @@ public class Delete {
 			deleteEdge("Out", sourceNode, nodeID, relType);
     	}
     }
-    
+
     /* This function deletes all the edges from InEdges table where the given node appears 
      * as a source node.  
      * e.g. If there are edges from 1->2, 2->3 and we are trying to delete node 2. Then 
@@ -107,14 +103,10 @@ public class Delete {
      * This function will delete edge 3 <- 2 from InEdges table.
      */
     public static void deleteInEdges(UUID nodeID) throws SQLException {
-    	Statement st = MainMenu.con.createStatement();
-
     	/* Out table can give us all the edges where the given node is a 
     	 * source node.
     	 */
-    	String query = "SELECT * FROM Out WHERE source_node = " + nodeID + ";";
-    	System.out.println(query);
-    	ResultSet result = st.executeQuery(query);
+    	ResultSet result = Queries.getOutEdges(nodeID);
     	while (result.next())
     	{
 			String relType = result.getString("rel_type");
@@ -122,7 +114,7 @@ public class Delete {
 			deleteEdge("InEdge", nodeID, destNode, relType);
     	}
     }
-    
+
     public static void deleteAllEdges(String table, UUID nodeId) throws SQLException {
     	Statement st = MainMenu.con.createStatement();
     	String query;
@@ -142,13 +134,8 @@ public class Delete {
 
     public static void deleteEdge(String table, UUID sourceNode, UUID destNode, String relType ) throws SQLException {
     	Statement st = MainMenu.con.createStatement();
-
-		String query = "SELECT rel_id FROM " + table + 
-				" WHERE source_node = " + sourceNode + 
-				" AND rel_type = '" + relType + "'" +
-				" AND dest_node = " + destNode + ";";
-    	System.out.println(query);
-    	ResultSet result = st.executeQuery(query);
+		String query;
+		ResultSet result = Queries.getRelId(table, sourceNode, destNode, relType);
 
     	while (result.next())
     	{
@@ -174,7 +161,7 @@ public class Delete {
     	
     	System.out.println("The relationship does not exist");
     }
-    
+
     public static void deleteNode(UUID nodeID) throws SQLException {
 
     	String query = "DELETE FROM Nodes WHERE node_id = " + nodeID + ";";

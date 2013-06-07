@@ -1,56 +1,60 @@
 package com.cass.graph;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.HashSet;
+import java.util.List;
 import java.util.UUID;
 
 public class FriendClass {
-    
-	public static List<UUID> remove_duplicate(List<UUID> nodes_list) throws SQLException {
-       	HashSet<UUID> hs = new HashSet<UUID>();
-       	hs.addAll(nodes_list);
-       	nodes_list.clear();
-       	nodes_list.addAll(hs);
-       	return(nodes_list);
-       }
 	
-	public static List<UUID> get_friends(UUID node_id, Connection con) throws SQLException {
- 	
+	public static void friendOfFriend() throws SQLException,IOException{
+		
+    	List<UUID> immediate_friends  = new ArrayList<UUID>();
+    	List<UUID> friends_of_friends  = new ArrayList<UUID>();
+    	
+    	//take user input
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));          
+        System.out.println("Enter node name for which you want to find friends of friend");
+        String userNode = br.readLine();        
+      	UUID node_id = Queries.getNodeId(userNode);
+      	
+        //finding immediate friends 
+        immediate_friends = get_friends(node_id);
+        
+        //finding friends of friends
+        System.out.println("Finding friends of friends:");
+        friends_of_friends = friendoffriend(immediate_friends);
+        Display.print_NodeNames(friends_of_friends);
+    }
+
+	public static List<UUID> get_friends(UUID node_id) throws SQLException {
         List<UUID> immediate_friends  = new ArrayList<UUID>();
+        
+        if (node_id!=null) {
+        	ResultSet rs = Queries.getDestNode(node_id);
+        	
+   	 		while(rs.next())
+      			 immediate_friends.add((UUID) rs.getObject(1));    		 
+   	 		immediate_friends = remove_duplicate(immediate_friends);
+   	 		}
+        return (immediate_friends);		
+	}
 	
-      	 if (node_id!=null)
-      	 {
-      		 String dest_st = "select dest_node from GraphDB.Out where source_node="+ node_id +";";
-      		 Statement st = con.createStatement();
-      		 ResultSet rs = st.executeQuery(dest_st);
-      		 while(rs.next())
-      			 immediate_friends.add((UUID) rs.getObject(1));
-      		 
-             immediate_friends = remove_duplicate(immediate_friends);
-      	 }
-      	 	return (immediate_friends);
-       }
-       
-	
-       public static List<UUID> friendoffriend(List<UUID> nodes_list, Connection con) throws SQLException {
-      	 	
-    	    List<UUID> friends_of_friends  = new ArrayList<UUID>();
-    	    List<UUID> mutualfriends  = new ArrayList<UUID>();
-    	    UUID dest_nodeid;
-    	    
-      	 	for(UUID element: nodes_list)
-      	 	{
-      	 	 if (element!=null)
-      	   	 {
+	public static List<UUID> friendoffriend(List<UUID> nodes_list) throws SQLException {
+		List<UUID> friends_of_friends  = new ArrayList<UUID>();
+		List<UUID> mutualfriends  = new ArrayList<UUID>();
+		UUID dest_nodeid;  	    
+		for(UUID element: nodes_list)
+		{
+			if (element!=null)
+			{
 				//friends_of_friends.add(element);
-      	 		String t = "select dest_node from GraphDB.Out where source_node="+ element +";";       
-      	 		Statement st = con.createStatement();
-      	 		ResultSet rs = st.executeQuery(t);
+      	 		ResultSet rs = Queries.getDestNode(element);
       	 		
       	 		while(rs.next())
       	 		{
@@ -61,9 +65,9 @@ public class FriendClass {
       	 			else
       	 				mutualfriends.add((UUID) rs.getObject(1));
       	 		}
-      	   	 }
-      	 	}
-      	 	/*
+      	   	 }			
+		}
+      	 /*
       	 if(mutualfriends.isEmpty())
       		System.out.println("No Mutual Friends.\n");
       	 else
@@ -72,7 +76,17 @@ public class FriendClass {
       		MainMenu.print_NodeNames(mutualfriends);
       	 } 
       	 */
-      	 friends_of_friends = remove_duplicate(friends_of_friends);
-      	 return (friends_of_friends);
+      	friends_of_friends = remove_duplicate(friends_of_friends);
+      	return (friends_of_friends);
        }
+	
+   	public static List<UUID> remove_duplicate(List<UUID> nodes_list) throws SQLException {
+       	HashSet<UUID> hs = new HashSet<UUID>();
+       	hs.addAll(nodes_list);
+       	nodes_list.clear();
+       	nodes_list.addAll(hs);
+       	return(nodes_list);
+       }
+	
+
 }

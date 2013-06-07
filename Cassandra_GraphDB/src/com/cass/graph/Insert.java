@@ -1,6 +1,5 @@
 package com.cass.graph;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.UUID;
@@ -25,7 +24,7 @@ public class Insert {
     	System.out.println("INSERT EDGE: ");
     	
     	System.out.print("Enter source node name: ");
-    	UUID sourceNode = validate_node(MainMenu.sc.next().trim());
+    	UUID sourceNode = Queries.getNodeId(MainMenu.sc.next().trim());
     	System.out.println(sourceNode);
     	if (sourceNode == null) {
     		System.out.println ("Invalid source node");
@@ -33,7 +32,7 @@ public class Insert {
     	}
     	
     	System.out.print("Enter destination node ID/ name: ");
-    	UUID destNode = validate_node(MainMenu.sc.next().trim());
+    	UUID destNode = Queries.getNodeId(MainMenu.sc.next().trim());
     	if (destNode == null) {
     		System.out.println ("Invalid destination node");
     		return;
@@ -53,20 +52,6 @@ public class Insert {
     	}
     }
 
-    public static UUID validate_node(String name) {
-    	String query="SELECT node_id FROM Nodes WHERE name = '" + name + "';";
-        System.out.println(query);
-        try {
-            Statement st = MainMenu.con.createStatement();
-            ResultSet rs = st.executeQuery(query);
-            return((UUID) rs.getObject(1));
-        } catch (SQLException e) {
-    		System.err.println(e.getMessage());
-        }
-        
-        return null;
-    }
-    
     public static void insertNode(String name, String gender,String occupation) 
     		throws SQLException {
     	UUID nodeID = UUID.randomUUID();
