@@ -9,7 +9,6 @@ public class Queries {
 
     public static UUID getNodeId(String name) {
     	String query="SELECT node_id FROM Nodes WHERE name = '" + name + "';";
-        System.out.println(query);
         try {
             Statement st = MainMenu.con.createStatement();
             ResultSet rs = st.executeQuery(query);

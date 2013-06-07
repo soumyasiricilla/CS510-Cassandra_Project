@@ -31,11 +31,16 @@ public class Display {
 
 	 public static void print_NodeNames(List<UUID> Result) throws SQLException {
 		 Statement st1 = MainMenu.con.createStatement();
-		 for(int i =0; i < Result.size(); i++) {
-			 String node_st = "SELECT name FROM Nodes where node_id ="+ Result.get(i) +";";
-			 ResultSet rs1 = st1.executeQuery(node_st);
-			 String node_name = ((String) rs1.getObject(1));
-			 System.out.println(node_name);
+		 if (Result.isEmpty())
+			 System.out.println("None");
+		 else
+		 {
+			 for(int i =0; i < Result.size(); i++) {
+				 String node_st = "SELECT name FROM Nodes where node_id ="+ Result.get(i) +";";
+				 ResultSet rs1 = st1.executeQuery(node_st);
+				 String node_name = ((String) rs1.getObject(1));
+				 System.out.println(node_name);
+			 }
 		 }
-	 }
+	}
 }

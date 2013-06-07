@@ -27,8 +27,8 @@ public class FriendClass {
         immediate_friends = get_friends(node_id);
         
         //finding friends of friends
-        System.out.println("Finding friends of friends:");
-        friends_of_friends = friendoffriend(immediate_friends);
+        System.out.println("\nFinding friends of friends:");
+        friends_of_friends = friendoffriend(immediate_friends,node_id);
         Display.print_NodeNames(friends_of_friends);
     }
 
@@ -45,7 +45,7 @@ public class FriendClass {
         return (immediate_friends);		
 	}
 	
-	public static List<UUID> friendoffriend(List<UUID> nodes_list) throws SQLException {
+	public static List<UUID> friendoffriend(List<UUID> nodes_list, UUID node_id) throws SQLException {
 		List<UUID> friends_of_friends  = new ArrayList<UUID>();
 		List<UUID> mutualfriends  = new ArrayList<UUID>();
 		UUID dest_nodeid;  	    
@@ -53,7 +53,6 @@ public class FriendClass {
 		{
 			if (element!=null)
 			{
-				//friends_of_friends.add(element);
       	 		ResultSet rs = Queries.getDestNode(element);
       	 		
       	 		while(rs.next())
@@ -67,7 +66,7 @@ public class FriendClass {
       	 		}
       	   	 }			
 		}
-      	 /*
+      	 /* for printing mutual friends
       	 if(mutualfriends.isEmpty())
       		System.out.println("No Mutual Friends.\n");
       	 else
@@ -77,6 +76,10 @@ public class FriendClass {
       	 } 
       	 */
       	friends_of_friends = remove_duplicate(friends_of_friends);
+      	
+      	//remove itself(node) if it comes in a cycle
+      	if (friends_of_friends.contains(node_id))
+      		friends_of_friends.remove(node_id);
       	return (friends_of_friends);
        }
 	
