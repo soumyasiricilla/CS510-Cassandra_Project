@@ -34,17 +34,27 @@ Java is used as a front end language for developing the application and connecti
 Download cassandra-jdbc driver(cassandra-jdbc-1.2.5.jar) from above given link in lib folder in CASSANDRA home (\apache-cassandra-1.2.5\lib).
 
 Make sure below librabraries are also present in lib folder in CASSANDRA home (\apache-cassandra-1.2.5\lib):
+
 apache-cassandra-thrift-1.2.5.jar
+
 apache-cassandra-clientutil-1.2.5.jar
+
 libthrift-0.7.0.jar
+
 apache-cassandra-1.2.5.jar
+
 guava-13.0.1.jar
+
 cassandra-jdbc-1.2.5.jar
+
 log4j-1.2.16.jar
+
 slf4j-api-1.7.2.jar
+
 slf4j-log4j12-1.7.2.jar
 
 Follow below link for running Cassandra Server and Client:
+
 http://wiki.apache.org/cassandra/GettingStarted
 
 3. Setup Cassandra cluster
@@ -56,6 +66,7 @@ http://help.eclipse.org/helios/index.jsp?topic=%2Forg.eclipse.platform.doc.user%
 
 
 File manifest(class files included):
+
 1. MainMenu.java
 
 2. Bridge.java
@@ -83,6 +94,7 @@ Credits and acknowledgments:
 We want to thank Professor Kristin Tufte for her guidance in Cloud Management Systems, which truely helped us while development of this project.
 
 References:
+
 http://www.developerstation.org/2011/08/simple-readwrite-example-using.html
 http://www.datastax.com/docs/1.2/cql_cli/index
 http://cassandra.apache.org/doc/cql/CQL.html
