@@ -57,8 +57,26 @@ Configuration Steps:
 
    http://wiki.apache.org/cassandra/GettingStarted
 
-2. Setup Cassandra cluster
+2. Setup Cassandra cluster and keyspace
+   
+   The Cassandra database can be setup in multinode cluster for replicating data among nodes. Below are the parameters that need to be modified in the cassandra.yaml file.
+   
+   listen_addr: Address to bind to and tell other
 
+   Cassandra nodes to connect to.
+
+   rpc_addr: The address other clients connect to.
+
+   Seeds: IP addr of machines that contain
+
+   information about the ring
+
+   RandomPartitioner: method to share data between clusters
+   
+   Create a keyspace with name "GraphDB" using below cmd:
+   
+   CREATE KEYSPACE GraphDB
+   WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }; 
 
 3. Download the github project and import it in Eclipse.
 
@@ -67,21 +85,21 @@ http://help.eclipse.org/helios/index.jsp?topic=%2Forg.eclipse.platform.doc.user%
 
 File manifest(class files included):
 
-1. MainMenu.java
+   MainMenu.java
 
-2. Bridge.java
+   Bridge.java
 
-3. Delete.java
+   Delete.java
 
-4. Display.java
+   Display.java
 
-5. FriendClass.java
+   FriendClass.java
 
-6. Insert.java
+   Insert.java
 
-7. Queries.java
+   Queries.java
 
-8. TransitiveClosure.java
+   TransitiveClosure.java
 
 
 Developers:
