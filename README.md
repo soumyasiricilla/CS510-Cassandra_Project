@@ -7,6 +7,7 @@ This project is a part of the course "CS 410/510-Data Management in the Cloud" i
 
 
 Software Needed:
+
 1. apache-cassandra-1.2.5-bin.tar.gz
 http://cassandra.apache.org/download/
 
