@@ -27,6 +27,7 @@ http://www.python.org/getit/
 Configuration Steps:
 
 1. Setup  Cassandra and cassandra-jdbc
+
 We are using cassandra-jdbc, which is a JDBC driver for connectivity between Cassandra/CQL and Java.
 Java is used as a front end language for developing the application and connecting to the database stored in Cassandra.
 
@@ -50,25 +51,35 @@ http://wiki.apache.org/cassandra/GettingStarted
 
 
 2. Download the github project and import it in Eclipse.
+
 http://help.eclipse.org/helios/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Ftasks%2Ftasks-importproject.htm
 
 
 File manifest(class files included):
 1. MainMenu.java
+
 2. Bridge.java
+
 3. Delete.java
+
 4. Display.java
+
 5. FriendClass.java
+
 6. Insert.java
+
 7. Queries.java
+
 8. TransitiveClosure.java
 
 
 Developers:
+
 Dang Le, Neena Maldikar, Norah Alballa, Pratibha Natani, Soumya Siricilla
 Portland State University (CS 410/510-Data Management in the Cloud  - Spring 2013 class)
 
 Credits and acknowledgments:
+
 We want to thank Professor Kristin Tufte for her guidance in Cloud Management Systems, which truely helped us while development of this project.
 
 References:
