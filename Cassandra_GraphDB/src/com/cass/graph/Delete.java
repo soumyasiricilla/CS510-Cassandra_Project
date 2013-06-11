@@ -32,8 +32,8 @@ public class Delete {
     	String relType = br.readLine().trim();
 
     	try {
-            deleteEdge("Out", sourceNode,destNode, relType);
-            deleteEdge("InEdge",sourceNode,destNode, relType);
+            deleteEdge(MainMenu.OutEdgesTable, sourceNode,destNode, relType);
+            deleteEdge(MainMenu.InEdgesTable,sourceNode,destNode, relType);
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
@@ -65,12 +65,12 @@ public class Delete {
         	/* Delete a row from Out table
         	 * where given node is a source node (row key)
         	 */
-        	deleteAllEdges("Out", nodeId);
+        	deleteAllEdges(MainMenu.OutEdgesTable, nodeId);
         	
         	/* Delete a row from InEdges table
         	 * where given node is a destination node (row key)
         	 */
-        	deleteAllEdges("InEdge", nodeId);
+        	deleteAllEdges(MainMenu.InEdgesTable, nodeId);
 
         	deleteNode(nodeId);
     	} catch (Exception e) {
@@ -95,7 +95,7 @@ public class Delete {
     	{
 			String relType = result.getString("rel_type");
 			UUID sourceNode = (UUID) result.getObject("source_node");
-			deleteEdge("Out", sourceNode, nodeID, relType);
+			deleteEdge(MainMenu.OutEdgesTable, sourceNode, nodeID, relType);
     	}
     }
 
@@ -116,14 +116,14 @@ public class Delete {
     	{
 			String relType = result.getString("rel_type");
 			UUID destNode = (UUID) result.getObject("dest_node");
-			deleteEdge("InEdge", nodeID, destNode, relType);
+			deleteEdge(MainMenu.InEdgesTable, nodeID, destNode, relType);
     	}
     }
 
     public static void deleteAllEdges(String table, UUID nodeId) throws SQLException {
     	Statement st = MainMenu.con.createStatement();
     	String query;
-		if (table.equals("Out")) {
+		if (table.equals(MainMenu.OutEdgesTable)) {
 			query = "DELETE FROM " + table + 
 					" WHERE source_node = " + nodeId + 
 					";";				
@@ -145,7 +145,7 @@ public class Delete {
     	while (result.next())
     	{
 			UUID relID = (UUID) result.getObject("rel_id");
-			if (table.equals("Out")) {
+			if (table.equals(MainMenu.OutEdgesTable)) {
 				query = "DELETE FROM " + table + 
 						" WHERE source_node = " + sourceNode + 
 						" AND rel_type = '" + relType + "'" +
@@ -169,7 +169,7 @@ public class Delete {
 
     public static void deleteNode(UUID nodeID) throws SQLException {
 
-    	String query = "DELETE FROM Nodes WHERE node_id = " + nodeID + ";";
+    	String query = "DELETE FROM " + MainMenu.NodesTable + " WHERE node_id = " + nodeID + ";";
     	System.out.println(query);
     	Statement st = MainMenu.con.createStatement();
     	st.executeUpdate(query);

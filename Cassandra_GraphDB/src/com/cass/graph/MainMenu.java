@@ -10,6 +10,10 @@ import java.util.Scanner;
 public class MainMenu {
     public static java.sql.Connection con = null;
     public static Scanner sc = new Scanner(System.in);
+    public static String NodesTable = "Nodes";
+    public static String OutEdgesTable = "OutEdges";
+    public static String InEdgesTable = "InEdges";
+    
     //private Cluster cluster;
     
     public static void main(String[] a){

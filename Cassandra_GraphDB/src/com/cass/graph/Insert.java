@@ -50,8 +50,8 @@ public class Insert {
     	int weight = MainMenu.sc.nextInt();
 
     	try {
-            insertEdge("Out", sourceNode, relType, destNode, weight);
-            insertEdge("InEdge", sourceNode, relType, destNode, weight);
+            insertEdge(MainMenu.OutEdgesTable, sourceNode, relType, destNode, weight);
+            insertEdge(MainMenu.InEdgesTable, sourceNode, relType, destNode, weight);
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
@@ -61,9 +61,10 @@ public class Insert {
     		throws SQLException {
     	UUID nodeID = UUID.randomUUID();
     			
-    	String query="INSERT INTO Nodes (node_id, name, gender, occupation) " +
-         		"VALUES (" + nodeID  + ", '" + name + "', '" + gender +
-         				 "','" + occupation + "');";
+    	String query="INSERT INTO " + MainMenu.NodesTable + 
+					 " (node_id, name, gender, occupation) " +
+					 "VALUES (" + nodeID  + ", '" + name + "', '" + gender +
+					 "','" + occupation + "');";
         Statement st = MainMenu.con.createStatement();
     	System.out.println(query);
         st.executeUpdate(query);

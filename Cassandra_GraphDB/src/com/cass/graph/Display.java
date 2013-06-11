@@ -50,7 +50,7 @@ public class Display {
 		 else
 		 {
 			 for(int i =0; i < Result.size(); i++) {
-				 String node_st = "SELECT name FROM Nodes where node_id ="+ Result.get(i) +";";
+				 String node_st = "SELECT name FROM " + MainMenu.NodesTable + " where node_id ="+ Result.get(i) +";";
 				 ResultSet rs1 = st1.executeQuery(node_st);
 				 String node_name = ((String) rs1.getObject(1));
 				 System.out.println(node_name);
