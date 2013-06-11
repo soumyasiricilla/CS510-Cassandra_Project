@@ -6,32 +6,18 @@ import java.io.InputStreamReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 public class Display {
-	 public static void printNodeDetails() throws SQLException,IOException{
+	 public static void printNodeAttr() throws SQLException,IOException{
 		 //get user input
 		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		 System.out.println("Enter node name for which you want to print the attributes:");
 		 String userNode = br.readLine();
 		 
 		 ResultSet rs = Queries.getNodeAttr(userNode);
-		 UUID node_id = (UUID) rs.getObject("node_id");
-
-		 List<UUID> outlist = new ArrayList<UUID>();
-	     outlist = FriendClass.get_friends(node_id);
-	     
-	     List<UUID> inlist = new ArrayList<UUID>();
-	     inlist = FriendClass.get_infriends(node_id);           
-	     
-	     
-		 printNodeAttr(rs);
-		 System.out.println("\nHas outgoing Edges to: ");
-	     print_NodeNames(outlist);
-		 System.out.println("\nHas incoming Edges from: ");
-	     print_NodeNames(inlist);
+		 printNodeAttr(rs);		 
 	 }
 
 	 public static void printNodeAttr(ResultSet rs) throws SQLException {

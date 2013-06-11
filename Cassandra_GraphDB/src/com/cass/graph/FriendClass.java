@@ -30,7 +30,7 @@ public class FriendClass {
         System.out.println("\nFinding friends of friends:");
         friends_of_friends = friendoffriend(immediate_friends,node_id);
         Display.print_NodeNames(friends_of_friends);
-        }
+    }
 
 	public static List<UUID> get_friends(UUID node_id) throws SQLException {
         List<UUID> immediate_friends  = new ArrayList<UUID>();
@@ -42,8 +42,8 @@ public class FriendClass {
       			 immediate_friends.add((UUID) rs.getObject(1));    		 
    	 		immediate_friends = remove_duplicate(immediate_friends);
    	 		}
-        return (immediate_friends);
-        }
+        return (immediate_friends);		
+	}
 	
 	public static List<UUID> friendoffriend(List<UUID> nodes_list, UUID node_id) throws SQLException {
 		List<UUID> friends_of_friends  = new ArrayList<UUID>();
@@ -81,7 +81,7 @@ public class FriendClass {
       	if (friends_of_friends.contains(node_id))
       		friends_of_friends.remove(node_id);
       	return (friends_of_friends);
-      	}
+       }
 	
    	public static List<UUID> remove_duplicate(List<UUID> nodes_list) throws SQLException {
        	HashSet<UUID> hs = new HashSet<UUID>();
@@ -89,18 +89,7 @@ public class FriendClass {
        	nodes_list.clear();
        	nodes_list.addAll(hs);
        	return(nodes_list);
-       	}
+       }
 	
-   	public static List<UUID> get_infriends(UUID node_id) throws SQLException {
-   		List<UUID> infriends  = new ArrayList<UUID>();
-        if (node_id!=null) {
-        	ResultSet rs = Queries.getSourceNode(node_id);
-        	
-   	 		while(rs.next())
-      			 infriends.add((UUID) rs.getObject(1));
-   	 		
-   	 		infriends = remove_duplicate(infriends);
-   	 		}
-        return (infriends);
-   		}
+
 }
