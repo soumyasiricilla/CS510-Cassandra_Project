@@ -33,15 +33,8 @@ public class Queries {
 		return rs;
 	}
     
-    public static ResultSet getSourceNode(UUID destNode) throws SQLException {
-		String t = "SELECT source_node FROM Out WHERE dest_node=" + destNode +";";       
+	public static ResultSet getOutEdges(UUID sourceNode) throws SQLException {
 		Statement st = MainMenu.con.createStatement();
-		ResultSet rs = st.executeQuery(t);
-		return rs;
-	}
-
-    public static ResultSet getOutEdges(UUID sourceNode) throws SQLException {
-    	Statement st = MainMenu.con.createStatement();
     	String query = "SELECT * FROM Out WHERE source_node = " + sourceNode + ";";
     	System.out.println(query);
     	ResultSet result = st.executeQuery(query);
