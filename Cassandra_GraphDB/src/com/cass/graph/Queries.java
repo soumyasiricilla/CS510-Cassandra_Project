@@ -9,7 +9,6 @@ public class Queries {
 
     public static UUID getNodeId(String name) {
     	String query="SELECT node_id FROM Nodes WHERE name = '" + name + "';";
-        System.out.println(query);
         try {
             Statement st = MainMenu.con.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -42,7 +41,7 @@ public class Queries {
 	}
 
     public static ResultSet getOutEdges(UUID sourceNode) throws SQLException {
-    	Statement st = MainMenu.con.createStatement();
+		Statement st = MainMenu.con.createStatement();
     	String query = "SELECT * FROM Out WHERE source_node = " + sourceNode + ";";
     	System.out.println(query);
     	ResultSet result = st.executeQuery(query);
