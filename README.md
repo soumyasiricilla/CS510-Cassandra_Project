@@ -95,6 +95,10 @@ development of this project.
 References:
 
 http://www.developerstation.org/2011/08/simple-readwrite-example-using.html
+
 http://www.datastax.com/docs/1.2/cql_cli/index
+
 http://cassandra.apache.org/doc/cql/CQL.html
+
 http://www.datastax.com/docs/1.1/dml/using_cql
+
