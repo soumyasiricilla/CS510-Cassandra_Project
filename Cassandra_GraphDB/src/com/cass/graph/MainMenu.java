@@ -19,7 +19,7 @@ public class MainMenu {
     public static void main(String[] a){
         try {
             Class.forName("org.apache.cassandra.cql.jdbc.CassandraDriver");
-            con=DriverManager.getConnection("jdbc:cassandra://localhost:9160");
+            con=DriverManager.getConnection("jdbc:cassandra://192.168.1.11:9160");
 
             String query = "Use GraphDB;";
             Statement st = con.createStatement();

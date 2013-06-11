@@ -46,7 +46,7 @@ public class Bridge{
 				 isbridgebool = true;
 		 }
 		 else //if there is no edge
-			 System.out.println("There is no edge b/w given nodes.");		 
+			 System.out.println("There is no edge between given nodes.");		 
 		 
 		 return isbridgebool;
     }

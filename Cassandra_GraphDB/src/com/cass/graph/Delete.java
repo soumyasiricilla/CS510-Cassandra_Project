@@ -133,7 +133,6 @@ public class Delete {
 					";";				
 			
 		}
-		System.out.println(query);
 		st.executeUpdate(query);
     }
 
@@ -159,7 +158,6 @@ public class Delete {
 						";";				
 				
 			}
-			System.out.println(query);
 			st.executeUpdate(query);
 			return;
     	}
@@ -170,7 +168,6 @@ public class Delete {
     public static void deleteNode(UUID nodeID) throws SQLException {
 
     	String query = "DELETE FROM " + MainMenu.NodesTable + " WHERE node_id = " + nodeID + ";";
-    	System.out.println(query);
     	Statement st = MainMenu.con.createStatement();
     	st.executeUpdate(query);
     }

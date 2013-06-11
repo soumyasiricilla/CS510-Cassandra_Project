@@ -43,7 +43,6 @@ public class Queries {
     public static ResultSet getOutEdges(UUID sourceNode) throws SQLException {
     	Statement st = MainMenu.con.createStatement();
     	String query = "SELECT * FROM " + MainMenu.OutEdgesTable + " WHERE source_node = " + sourceNode + ";";
-    	System.out.println(query);
     	ResultSet result = st.executeQuery(query);
 		return result;
 	}
@@ -51,7 +50,6 @@ public class Queries {
 	public static ResultSet getInEdges(UUID destNode) throws SQLException {
 		Statement st = MainMenu.con.createStatement();
     	String query = "SELECT * FROM " + MainMenu.InEdgesTable + " WHERE dest_node = " + destNode + ";";
-    	System.out.println(query);
     	ResultSet result = st.executeQuery(query);
 		return result;
 	}
@@ -63,7 +61,6 @@ public class Queries {
 				" WHERE source_node = " + sourceNode + 
 				" AND rel_type = '" + relType + "'" +
 				" AND dest_node = " + destNode + ";";
-    	System.out.println(query);
     	ResultSet result = st.executeQuery(query);
 		return result;
 	}

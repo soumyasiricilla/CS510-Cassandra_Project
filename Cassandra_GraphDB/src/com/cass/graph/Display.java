@@ -19,19 +19,24 @@ public class Display {
 		 
 		 ResultSet rs = Queries.getNodeAttr(userNode);
 		 UUID node_id = (UUID) rs.getObject("node_id");
+		 
+		 if (node_id == null) {
+			 System.out.println("The node does not exist"); 
+		 } else {
 
-		 List<UUID> outlist = new ArrayList<UUID>();
-		 outlist = FriendClass.get_friends(node_id);
-		
-		 List<UUID> inlist = new ArrayList<UUID>();
-		 inlist = FriendClass.get_infriends(node_id);           
-		 
-		 
-		 printNodeAttr(rs);
-		 System.out.println("\nHas outgoing Edges to: ");
-		 print_NodeNames(outlist);
-		 System.out.println("\nHas incoming Edges from: ");
-		 print_NodeNames(inlist);
+			 List<UUID> outlist = new ArrayList<UUID>();
+			 outlist = FriendClass.get_friends(node_id);
+			
+			 List<UUID> inlist = new ArrayList<UUID>();
+			 inlist = FriendClass.get_infriends(node_id);           
+			 
+			 
+			 printNodeAttr(rs);
+			 System.out.println("\nHas outgoing Edges to: ");
+			 print_NodeNames(outlist);
+			 System.out.println("\nHas incoming Edges from: ");
+			 print_NodeNames(inlist);
+		 }
 	 }
 
 	 public static void printNodeAttr(ResultSet rs) throws SQLException {

@@ -66,7 +66,6 @@ public class Insert {
 					 "VALUES (" + nodeID  + ", '" + name + "', '" + gender +
 					 "','" + occupation + "');";
         Statement st = MainMenu.con.createStatement();
-    	System.out.println(query);
         st.executeUpdate(query);
     	System.out.println("Inserted node: " + nodeID);
     }
@@ -78,7 +77,6 @@ public class Insert {
         										"rel_type, dest_node, weight) " +
         			 "VALUES (" + sourceNode + "," + relID + "," + "'" + 
         						relType + "', " + destNode +"," + weight + ");";
-        System.out.println(query);
         Statement st = MainMenu.con.createStatement();
         st.executeUpdate(query);
     }
