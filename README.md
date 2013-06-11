@@ -58,20 +58,22 @@ Configuration Steps:
 
    > Seeds: IP addr of machines that contain information about the ring
 
-   > RandomPartitioner: method to share data between clusters
+   > Murmur3Partitioner: make sure this is the partitioning method used
    
    > Create a keyspace with name "GraphDB" using below cmd:
    
       CREATE KEYSPACE GraphDB
-      WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }; 
+      WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 }; 
 
 3. Download the github project and import it in Eclipse.
 
 http://help.eclipse.org/helios/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Ftasks%2Ftasks-importproject.htm
 
 
-File manifest(class files included):
+File manifest(class files and script files included):
 
+   > CQl_Commands.txt
+   
    > MainMenu.java
 
    > Bridge.java
@@ -92,6 +94,7 @@ File manifest(class files included):
 Developers:
 
 Dang Le, Neena Maldikar, Norah Alballa, Pratibha Natani, Soumya Siricilla
+
 Portland State University (CS 410/510-Data Management in the Cloud  - Spring 2013 class)
 
 Credits and acknowledgments:
