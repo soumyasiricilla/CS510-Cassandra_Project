@@ -21,17 +21,17 @@ public class Display {
 		 UUID node_id = (UUID) rs.getObject("node_id");
 
 		 List<UUID> outlist = new ArrayList<UUID>();
-	     outlist = FriendClass.get_friends(node_id);
-	     
-	     List<UUID> inlist = new ArrayList<UUID>();
-	     inlist = FriendClass.get_infriends(node_id);           
-	     
-	     
+		 outlist = FriendClass.get_friends(node_id);
+		
+		 List<UUID> inlist = new ArrayList<UUID>();
+		 inlist = FriendClass.get_infriends(node_id);           
+		 
+		 
 		 printNodeAttr(rs);
 		 System.out.println("\nHas outgoing Edges to: ");
-	     print_NodeNames(outlist);
+		 print_NodeNames(outlist);
 		 System.out.println("\nHas incoming Edges from: ");
-	     print_NodeNames(inlist);
+		 print_NodeNames(inlist);
 	 }
 
 	 public static void printNodeAttr(ResultSet rs) throws SQLException {
@@ -45,16 +45,11 @@ public class Display {
 
 	 public static void print_NodeNames(List<UUID> Result) throws SQLException {
 		 Statement st1 = MainMenu.con.createStatement();
-		 if (Result.isEmpty())
-			 System.out.println("None");
-		 else
-		 {
-			 for(int i =0; i < Result.size(); i++) {
-				 String node_st = "SELECT name FROM Nodes where node_id ="+ Result.get(i) +";";
-				 ResultSet rs1 = st1.executeQuery(node_st);
-				 String node_name = ((String) rs1.getObject(1));
-				 System.out.println(node_name);
-			 }
+		 for(int i =0; i < Result.size(); i++) {
+			 String node_st = "SELECT name FROM Nodes where node_id ="+ Result.get(i) +";";
+			 ResultSet rs1 = st1.executeQuery(node_st);
+			 String node_name = ((String) rs1.getObject(1));
+			 System.out.println(node_name);
 		 }
-	}
+	 }
 }
