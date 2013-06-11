@@ -83,6 +83,17 @@ public class FriendClass {
       	return (friends_of_friends);
        }
 	
+	public static List<UUID> get_infriends(UUID node_id) throws SQLException {
+   		List<UUID> infriends  = new ArrayList<UUID>();
+        if (node_id!=null) {
+        	ResultSet rs = Queries.getSourceNode(node_id);  	 	
+        	while(rs.next())
+      			 infriends.add((UUID) rs.getObject(1));
+   	 		
+   	 		infriends = remove_duplicate(infriends);
+   	 		}
+        return (infriends);
+        }
    	public static List<UUID> remove_duplicate(List<UUID> nodes_list) throws SQLException {
        	HashSet<UUID> hs = new HashSet<UUID>();
        	hs.addAll(nodes_list);
