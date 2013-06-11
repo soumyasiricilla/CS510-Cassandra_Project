@@ -72,7 +72,7 @@ http://help.eclipse.org/helios/index.jsp?topic=%2Forg.eclipse.platform.doc.user%
 
 File manifest(class files and script files included):
 
-   > CQl_Commands.txt
+   > CQL_Commands.txt
    
    > MainMenu.java
 
