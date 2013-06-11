@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class MainMenu {
     public static java.sql.Connection con = null;
     public static Scanner sc = new Scanner(System.in);
+    //private Cluster cluster;
     
     public static void main(String[] a){
         try {
@@ -29,7 +30,7 @@ public class MainMenu {
                 System.out.println("2. Insert a relationship");
                 System.out.println("3. Delete a node");
                 System.out.println("4. Delete a relationship");
-                System.out.println("5. Print node attributes");
+                System.out.println("5. Display node details");
                 System.out.println("6. Friend of friend");
                 System.out.println("7. Transitive Closure");
                 System.out.println("8. Bridge");
@@ -46,7 +47,7 @@ public class MainMenu {
                 		break;
                 case 4: Delete.deleteEdge();
                 		break;
-                case 5: Display.printNodeAttr();
+                case 5: Display.printNodeDetails();
         				break;                		
                 case 6: FriendClass.friendOfFriend();
                 		break;
