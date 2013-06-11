@@ -65,7 +65,9 @@ Configuration Steps:
       CREATE KEYSPACE GraphDB
       WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 }; 
 
-3. Download the github project and import it in Eclipse.
+3. Create Keyspace and column families using CQL_Commands.txt file.
+
+4. Download the github project and import it in Eclipse.
 
 http://help.eclipse.org/helios/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Ftasks%2Ftasks-importproject.htm
 
