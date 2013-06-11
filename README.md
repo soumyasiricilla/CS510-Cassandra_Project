@@ -64,13 +64,21 @@ Configuration Steps:
 File manifest(class files and script files included):
 
    > CQL_Commands.txt
+   
    > MainMenu.java
+   
    > Bridge.java
+   
    > Delete.java
+   
    > Display.java
+   
    > FriendClass.java
+   
    > Insert.java
+   
    > Queries.java
+   
    > TransitiveClosure.java
    
 Developers:
