@@ -23,6 +23,7 @@ public class Insert {
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
+    	System.out.println("\nThe node is inserted.");
     }
     
     public static void insertEdge() throws IOException {
@@ -36,7 +37,7 @@ public class Insert {
     		return;
     	}
     	
-    	System.out.print("Enter destination node ID/ name: ");
+    	System.out.print("Enter destination node name: ");
     	UUID destNode = Queries.getNodeId(br.readLine().trim());
     	if (destNode == null) {
     		System.out.println ("Invalid destination node");
@@ -55,6 +56,7 @@ public class Insert {
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
+    	System.out.println("\nThe edge is inserted.");    	
     }
 
     public static void insertNode(String name, String gender,String occupation) 
@@ -67,7 +69,6 @@ public class Insert {
 					 "','" + occupation + "');";
         Statement st = MainMenu.con.createStatement();
         st.executeUpdate(query);
-    	System.out.println("Inserted node: " + nodeID);
     }
 
     public static void insertEdge(String table, UUID sourceNode, String relType, 

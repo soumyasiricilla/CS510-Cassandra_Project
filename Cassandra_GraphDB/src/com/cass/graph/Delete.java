@@ -37,6 +37,7 @@ public class Delete {
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
+    	System.out.println("\nThe edge is deleted.");
     }
 
     /* This function first deletes all the edges associated with the given node and
@@ -76,6 +77,7 @@ public class Delete {
     	} catch (Exception e) {
     		System.err.println(e.getMessage());
     	}
+    	System.out.println("\nThe node and its edges are deleted.");
     }
     
     /* This function deletes all the edges from Out table where the given node appears 

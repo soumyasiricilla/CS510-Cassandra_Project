@@ -14,7 +14,7 @@ public class Display {
 	 public static void printNodeDetails() throws SQLException,IOException{
 		 //get user input
 		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		 System.out.println("Enter node name for which you want to print the attributes:");
+		 System.out.println("Enter node name to be displayed:");
 		 String userNode = br.readLine();
 		 
 		 ResultSet rs = Queries.getNodeAttr(userNode);
