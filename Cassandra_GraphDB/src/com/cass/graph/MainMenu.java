@@ -41,7 +41,7 @@ public class MainMenu {
                 System.out.println("7. Transitive Closure");
                 System.out.println("8. Bridge");
                 System.out.println("9. Exit");
-                System.out.print("Enter your choice: ");
+                System.out.print("\nEnter your choice: ");
                 choice = sc.nextInt();
                 
                 switch(choice) {

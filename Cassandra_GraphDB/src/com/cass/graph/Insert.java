@@ -31,7 +31,6 @@ public class Insert {
     	
     	System.out.print("Enter source node name: ");
     	UUID sourceNode = Queries.getNodeId(br.readLine().trim());
-    	System.out.println(sourceNode);
     	if (sourceNode == null) {
     		System.out.println ("Invalid source node");
     		return;
