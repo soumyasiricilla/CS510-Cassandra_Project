@@ -29,6 +29,8 @@ public class MainMenu {
             
             while (choice != 9) {
             	System.out.println("\n");
+            	System.out.println("Graph Database Management System");
+            	System.out.println("================================");
                 System.out.println("MAIN MENU");            	
                 System.out.println("1. Insert a node");
                 System.out.println("2. Insert a relationship");

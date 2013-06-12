@@ -25,9 +25,9 @@ public class Bridge{
       	
        	boolean check = Bridge.isBridge(firstnode_id, secondnode_id);
        	if ( check == true )
-       		System.out.println("Given edge is a bridge.");
+       		System.out.println("\nGiven edge is a bridge.");
        	else
-       		System.out.println("Given edge is NOT a bridge.");
+       		System.out.println("\nGiven edge is NOT a bridge.");
     }
 
     public static boolean isBridge(UUID srcNode, UUID dstNode) throws SQLException {

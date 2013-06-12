@@ -21,7 +21,7 @@ public class TransitiveClosure {
      
     	Result = TransClosure(node_id, null);
     	
-    	System.out.println("Transitive Closure of " + userNode);
+    	System.out.println("\nTransitive Closure of " + userNode);
     	Display.print_NodeNames(Result);
     }
 
