@@ -60,6 +60,8 @@ Configuration Steps:
 4. Add External JARs
    Go to Projec Properties>Java Build Path>Add External Jars and add all the JARs from \apache-cassandra\lib folder.
 
+5. If you do not want to import an Eclipse project, you can skip steps 3 & 4. Just run the .jar file as follows:
+	java -jar Cassandra_GraphDB.jar
 
 File manifest(class files and script files included):
 
